@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace HSProject
+namespace SuriviveProject
 {
     public class GridSpawner
     {
@@ -14,10 +14,16 @@ namespace HSProject
             this.grid = grid;
         }
 
+        public void SetPosition(Vector2Int gridPosition, GameObject instantiatedObject)
+        {
+            Vector2 delta = GridToWorldPosition(gridPosition) - instantiatedObject.transform.position.ToVector2();
+            instantiatedObject.transform.Translate(delta, Space.World);
+        }
+
         public GameObject Instantiate(Vector2Int gridPosition, GameObject prefab)
         {
             GameObject spawnedCell = GameObject.Instantiate(prefab, grid.transform);
-            spawnedCell.transform.Translate(GridToWorldPosition(gridPosition).Vector2ToVector3(), Space.World);
+            spawnedCell.transform.Translate(GridToWorldPosition(gridPosition).ToVector3(), Space.World);
             return spawnedCell;
         }
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace HSProject
+namespace SuriviveProject
 {
     public abstract class Cell : MonoBehaviour
     {

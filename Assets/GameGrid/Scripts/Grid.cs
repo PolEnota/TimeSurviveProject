@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HSProject
+namespace SuriviveProject
 {
     public class Grid : MonoBehaviour
     {
-        [SerializeField]
+        public Vector2Int Center
+        {
+            get; private set;
+        }
         private Vector2 gridScale = Vector2.one;
 
         public Vector2 GridScale
@@ -23,9 +26,12 @@ namespace HSProject
 
         private GridSpawner gridSpawner;
 
-        public void InitGrid(Vector2Int center)
+
+        public GridSpawner InitGrid(Vector2Int center)
         {
             gridSpawner = new(this);
+
+            Center = center;
 
             cells = new List<Cell>();
             for (int x = center.x - gridSize.x / 2; x < center.x + gridSize.x / 2; x++)
@@ -35,6 +41,8 @@ namespace HSProject
                     gridSpawner.Instantiate(new Vector2Int(x,y), exampleCell);
                 }
             }
+
+            return gridSpawner;
         }
     }
 }
