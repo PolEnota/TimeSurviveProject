@@ -14,13 +14,18 @@ namespace SuriviveProject
 
         private PlayerFactory entityFactory;
         private GridSpawner spawner;
+        [SerializeField]
+        private Camera gameCamera;
 
         public void Awake()
         {
             spawner = mainGrid.InitGrid(Vector2Int.zero);
             entityFactory = gameObject.AddComponent<PlayerFactory>();
             entityFactory.Initialize(new PlayerFactoryArg() { gridSpawner = spawner, inputEvents = inputEvents });
-            entityFactory.SpawnEntity(entityLib.PlayerEntity, mainGrid.Center);
+            GameObject player = entityFactory.SpawnEntity(entityLib.PlayerEntity, mainGrid.Center);
+            CameraController cameraController = gameCamera.gameObject.AddComponent<CameraController>();
+            cameraController.gameObject.AddComponent<BaseMovable>();
+            cameraController.Initialize(new TargetArg() { target = player.transform });
         }
     }
 }

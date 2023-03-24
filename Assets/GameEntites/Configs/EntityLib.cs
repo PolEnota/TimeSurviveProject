@@ -7,7 +7,6 @@ namespace SuriviveProject.Configs
     {
         [SerializeField]
         private EntityConfig _playerEntityConfig;
-
         public EntityConfig PlayerEntity
         {
             get
@@ -15,6 +14,16 @@ namespace SuriviveProject.Configs
                 return _playerEntityConfig;
             }
 
+        }
+
+        [SerializeField]
+        private EntityConfig _gameCameraConfig;      
+        public EntityConfig GameCamera
+        {
+            get
+            {
+                return _gameCameraConfig;
+            }
         }
     }
 }

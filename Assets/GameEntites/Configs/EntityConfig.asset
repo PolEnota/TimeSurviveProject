@@ -18,3 +18,9 @@ MonoBehaviour:
       Strength: 0
       Speed: 20
       Vitality: 0
+  _gameCameraConfig:
+    prefab: {fileID: 4676393218789847621, guid: 2e7c2050e7f7c024e88dfc80b09848a2, type: 3}
+    mainStats:
+      Strength: 0
+      Speed: 0
+      Vitality: 0
